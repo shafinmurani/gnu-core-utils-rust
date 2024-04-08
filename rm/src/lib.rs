@@ -35,7 +35,7 @@ impl Config<'_> {
                 let result = Self::rm_dir_all(entry);
                 match result {
                     Ok(()) => {}
-                    Err(e) => eprintln!("Application Error: {}", e),
+                    Err(e) => eprintln!("Application Error : `{}`  {}", entry , e),
                 };
             }
         }
