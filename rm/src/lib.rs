@@ -1,5 +1,5 @@
+use std::path::Path;
 use std::{fs, io};
-
 pub struct Config<'a> {
     pub files: &'a Vec<String>,
 }
@@ -21,8 +21,16 @@ impl Config<'_> {
     }
 
     fn rm_dir_all(src: &String) -> io::Result<()> {
-        fs::remove_dir_all(src)?;
-        Ok(())
+        let src_path = Path::new(src);
+        let src_path_buffer = src_path.to_path_buf();
+
+        if src_path_buffer.is_dir() {
+            fs::remove_dir_all(src)?;
+            Ok(())
+        } else {
+            fs::remove_file(src)?;
+            Ok(())
+        }
     }
 
     pub fn run(&self) {
@@ -35,7 +43,7 @@ impl Config<'_> {
                 let result = Self::rm_dir_all(entry);
                 match result {
                     Ok(()) => {}
-                    Err(e) => eprintln!("Application Error : `{}`  {}", entry , e),
+                    Err(e) => eprintln!("Application Error : `{}`  {}", entry, e),
                 };
             }
         }
