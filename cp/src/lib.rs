@@ -11,7 +11,7 @@ impl Config<'_> {
     }
 
     fn not_enough_arguments() {
-        eprintln!("mkdir: missing operand");
+        eprintln!("cp: missing operand");
         eprintln!("For help use: cp --help");
     }
 
