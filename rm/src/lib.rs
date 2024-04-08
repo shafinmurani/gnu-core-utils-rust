@@ -18,7 +18,7 @@ impl Config<'_> {
     fn help() {
         eprintln!("This is a cheap little clone of the rm utility in the GNU core utilities, the catch is that I made it in rust, check out more of my work at medium: https://shafinmurani.medium.com");
         eprintln!("This is recursive by default so dont worry about anything, just run it :D");
-        eprintln!("To use this util: rm path");
+        eprintln!("To use this util: rm path1 path2 ... pathN");
     }
 
     fn rm_dir_all(src: impl AsRef<Path>) -> io::Result<()> {
