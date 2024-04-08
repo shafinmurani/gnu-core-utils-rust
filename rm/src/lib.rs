@@ -1,4 +1,3 @@
-use std::path::Path;
 use std::{fs, io};
 
 pub struct Config<'a> {
@@ -21,7 +20,7 @@ impl Config<'_> {
         eprintln!("To use this util: rm path1 path2 ... pathN");
     }
 
-    fn rm_dir_all(src: impl AsRef<Path>) -> io::Result<()> {
+    fn rm_dir_all(src: &String) -> io::Result<()> {
         fs::remove_dir_all(src)?;
         Ok(())
     }
