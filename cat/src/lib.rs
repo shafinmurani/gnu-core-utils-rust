@@ -38,7 +38,7 @@ impl Config<'_>{
                let result = Self::read_document(file.to_string());
                 match result {
                     Ok(r) => println!("{}",r),
-                    Err(e) => eprintln!("{}",e)
+                    Err(e) => eprintln!("Application Error: `{}` {}",file,e)
                 };
             }
         }
