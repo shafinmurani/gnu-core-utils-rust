@@ -25,7 +25,7 @@ impl Config<'_>{
     }
 
     pub fn run(&self){
-        if self.dir_names.len() == 0 {
+        if self.dir_names.is_empty() {
             Self::not_enough_arguments();
         } else if self.dir_names.contains(&String::from("--help")){
             Self::help();
