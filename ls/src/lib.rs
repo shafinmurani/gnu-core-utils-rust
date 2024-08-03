@@ -1,6 +1,6 @@
 use std::fs;
-use std::process;
 use std::path::PathBuf;
+use std::process;
 
 pub struct Config<'a> {
     pub path: &'a Vec<String>,
@@ -17,12 +17,11 @@ impl Config<'_> {
 
             for item in dir {
                 let metadata = PathBuf::from(&item.as_ref().unwrap().path());
-                if metadata.is_dir(){
-                    println!("{}/",item.unwrap().path().display());
-                }else{
-                    println!("{}", item.unwrap().path().display());
+                if metadata.is_dir() {
+                    print!("{}/ \t", item.unwrap().path().display());
+                } else {
+                    print!("{} \t", item.unwrap().path().display());
                 }
-                
             }
         } else {
             for paths in self.path {
@@ -33,10 +32,10 @@ impl Config<'_> {
                 println!("Files in {}:", paths);
                 for item in dir {
                     let metadata = PathBuf::from(&item.as_ref().unwrap().path());
-                    if metadata.is_dir(){
-                        println!("{}/", item.unwrap().path().display());
+                    if metadata.is_dir() {
+                        print!("{}/ \t", item.unwrap().path().display());
                     } else {
-                        println!("{}", item.unwrap().path().display());
+                        print!("{} \t", item.unwrap().path().display());
                     }
                 }
                 println!("");
@@ -64,10 +63,9 @@ mod tests {
     }
 
     #[test]
-    fn test_run_with_multiple_arguments(){
-        let args: Vec<String> = vec!["/".to_string(),".".to_string()];
+    fn test_run_with_multiple_arguments() {
+        let args: Vec<String> = vec!["/".to_string(), ".".to_string()];
         let config = Config::new(&args);
         config.run();
     }
 }
-
